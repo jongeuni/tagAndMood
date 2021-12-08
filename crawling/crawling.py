@@ -30,6 +30,13 @@ def select_first(driver):
     time.sleep(3)
 
 
+# 다음 페이지로 넘어가는 코드
+def move_next(driver):
+    right = driver.find_element_by_css_selector('body > div._2dDPU.QPGbb.CkGkG > div.EfHg9 > div > div > div > button')
+    time.sleep(3)
+    right.click()
+    time.sleep(3)
+
 
 
 # 정보 저장
