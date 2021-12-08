@@ -18,8 +18,16 @@ def crawling():
 
     results = []
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+    target = 500
+    for i in range(target):
+        try:
+            data = get_content(driver)
+            print(data)
+            results.append(data)
+            move_next(driver)
+        except:
+            time.sleep(2)
+            move_next(driver)
 
 
 def print_hi(name):

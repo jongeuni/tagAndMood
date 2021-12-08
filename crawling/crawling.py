@@ -28,3 +28,28 @@ def select_first(driver):
     first = driver.find_element_by_css_selector('#react-root > div > div > section > main > article > div.EZdmt > div > div > div:nth-child(1) > div:nth-child(1) > a > div.eLAPa > div._9AhH0')
     first.click()
     time.sleep(3)
+
+
+
+
+# 정보 저장
+def get_content(driver):
+    html = driver.page_source
+    soup = BeautifulSoup(html, 'html.parser')
+    # 본문 내용
+    try:
+        content = soup.select('div.C4VMK > span')[0].text
+    except:
+        content = ' '
+    # 해시태그
+    tags = re.findall(r'#[^\s#,\\]+', content)
+    # 작성일자
+    date = soup.select('time._1o9PC.Nzb55')[0]['datetime'][:10]
+    # 좋아요
+    try:
+        like = soup.select('div.Nm9Fw > button')[0].text[4:-1] # 좋아요 갯수 잘 측정되지 않음!
+    except:
+        like = 0
+
+    data = [content, date, like, tags]
+    return data
