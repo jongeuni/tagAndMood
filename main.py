@@ -54,6 +54,11 @@ if __name__ == '__main__':
     input_pw = driver.find_elements_by_css_selector('input._2hvTZ.pexuQ.zyHYP')[1]
     input_pw.clear()
     input_pw.send_keys(password)
+    time.sleep(5)
     input_pw.submit()
 
-    #crawling()
+    time.sleep(5)
+
+    later_button(driver)
+
+    # crawling()
