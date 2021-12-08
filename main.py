@@ -12,7 +12,7 @@ def crawling():
     url = insta_searching(word)
 
     driver.get(url)
-    time.sleep(3)
+    time.sleep(8)
 
     select_first(driver)
 
