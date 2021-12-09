@@ -28,10 +28,15 @@ def tag_count(c):  # 태그 수 새기!
 
 
 if __name__ == '__main__':
-    row = ['content', 'date', 'tag_count', 'letter_count', 'imoji_count']
+    # row = ['content', 'date', 'tag_count', 'letter_count', 'imoji_count']
     df = pd.read_csv('../csv/happy_행복한하루.csv', header='infer', encoding='utf-8')  # DataFrame
     content = df['content'].tolist()
-    print(tag_count(content))
-    print(letter_count(content))
-    print(emoji_count(content))
+    fi = pd.DataFrame({
+        'content' : df['content'].tolist(),
+        'date' : df['data'].tolist(),
+        'tag_count':tag_count(content),
+        'letter_count':letter_count(content),
+        'emoji_count':emoji_count(content)
+    })
+    print(fi)
 
