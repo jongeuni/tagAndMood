@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
+import pandas as pd
 
 
-def hangle(): # 한글 깨짐 처리
+def hangle():  # 한글 깨짐 처리
     plt.rc('font', family='Malgun Gothic')
     plt.rcParams['axes.unicode_minus'] = False
 
@@ -23,6 +24,15 @@ def bar_graph(df, name):
     plt.show()
 
 
-def bar_graph_v2(df):
-    # plt.barh(['#happy', '#sad'])
-    plt.barh(df, 'BaseValue', 25)
+def avg_comparison_graph(sad, happy):
+    hangle()
+    x_label = ['emoji_count', 'tag_count', 'letter_count']
+    x = pd.Series([1, 2, 3])
+
+    plt.xticks(x + 0.2, x_label)
+
+    plt.bar(x, happy, color='yellow', width=0.4, label='#happy')
+    plt.bar(x + 0.4, sad, color='skyblue', width=0.4, label='#sad')
+
+    plt.legend()
+    plt.show()

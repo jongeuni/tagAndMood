@@ -20,24 +20,43 @@ def letter_count(c):
     for i in c:
         letter_count_lis.append(len(i))
 
-    return letter_count_lis
-
-
-def tag_count(c):
-    tag_count_lis = []
-    for i in c:
-        tags = re.findall(r'#[^\s#,\\]+', i)
-        tag_count_lis.append(len(tags))
-    return tag_count_lis
-
-
-def evg(s):
-    print(s)
+def avg(s):
     return numpy.mean(s)
 
 
 def graph_choice():
     print()
+
+
+def tag_avg():
+    happy_day = read_csv('../csv/happy_행복한하루.csv', header='infer', encoding='utf-8')
+    happy_ham = read_csv('../csv/happy_행복햄.csv', header='infer', encoding='utf-8')
+    sad_day = read_csv('../csv/sad_슬픈하루.csv', header='infer', encoding='utf-8')
+    sad_uu = read_csv('../csv/sad_우울해.csv', header='infer', encoding='utf-8')
+
+    happy_avg = [avg(
+        letter_count(happy_day['content'].tolist())
+        + letter_count(happy_ham['content'].tolist())
+    ), avg(
+        tag_count(happy_day['content'].tolist())
+        + tag_count(happy_ham['content'].tolist())
+    ), avg(
+        emoji_count(happy_day['content'].tolist())
+        + emoji_count(happy_ham['content'].tolist())
+    )]
+
+    sad_avg = [avg(
+        letter_count(sad_day['content'].tolist())
+        + letter_count(sad_uu['content'].tolist())
+    ), avg(
+        tag_count(sad_day['content'].tolist())
+        + tag_count(sad_uu['content'].tolist())
+    ), avg(
+        emoji_count(sad_day['content'].tolist())
+        + emoji_count(sad_uu['content'].tolist())
+    )]
+
+    avg_comparison_graph(sad_avg, happy_avg)
 
 
 if __name__ == '__main__':
