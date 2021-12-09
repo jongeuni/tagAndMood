@@ -1,10 +1,13 @@
-import csv
+import emoji
 import pandas as pd
 import re
 
 
-def imoji_count():  # 이모지 갯수 새기!
-    print('hi')
+def emoji_count(c):  # 이모지 갯수 새기!
+    emoji_count_lis = []
+    for i in c:
+        emoji_count_lis.append(emoji.emoji_count(i))
+    return emoji_count_lis
 
 
 def letter_count(c):  # 글자 수 새기!
@@ -25,8 +28,10 @@ def tag_count(c):  # 태그 수 새기!
 
 
 if __name__ == '__main__':
+    row = ['content', 'date', 'tag_count', 'letter_count', 'imoji_count']
     df = pd.read_csv('../csv/happy_행복한하루.csv', header='infer', encoding='utf-8')  # DataFrame
     content = df['content'].tolist()
     print(tag_count(content))
     print(letter_count(content))
+    print(emoji_count(content))
 
