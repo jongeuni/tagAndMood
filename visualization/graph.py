@@ -24,12 +24,28 @@ def bar_graph(df, name):
     plt.show()
 
 
+def plt_text_setting(x, df, b):
+    for i, v in enumerate(x):
+        if b:
+            v = v+0.4
+        plt.text(v, df[i], df[i],  # 좌표 (x축 = v, y축 = y[0]..y[1], 표시 = y[0]..y[1])
+                 fontsize=9,
+                 color='black',
+                 horizontalalignment='center',  # horizontalalignment (left, center, right)
+                 verticalalignment='bottom')
+
+
 def avg_comparison_graph(sad, happy):
     hangle()
-    x_label = ['emoji_count', 'tag_count', 'letter_count']
+    x_label = ['letter_count', 'tag_count', 'emoji_count']
     x = pd.Series([1, 2, 3])
 
     plt.xticks(x + 0.2, x_label)
+
+    plt.title('기분과 SNS의 연관관계')
+
+    plt_text_setting(x, happy, False)
+    plt_text_setting(x, sad, True)
 
     plt.bar(x, happy, color='yellow', width=0.4, label='#happy')
     plt.bar(x + 0.4, sad, color='skyblue', width=0.4, label='#sad')
