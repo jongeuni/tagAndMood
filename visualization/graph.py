@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 
 
@@ -27,7 +28,7 @@ def bar_graph(df, name):
 def plt_text_setting(x, df, b):
     for i, v in enumerate(x):
         if b:
-            v = v+0.4
+            v = v + 0.4
         plt.text(v, df[i], df[i],  # 좌표 (x축 = v, y축 = y[0]..y[1], 표시 = y[0]..y[1])
                  fontsize=9,
                  color='black',
@@ -44,8 +45,8 @@ def avg_comparison_graph(sad, happy):
 
     plt.title('기분과 SNS의 연관관계')
 
-    plt_text_setting(x, happy, False)
-    plt_text_setting(x, sad, True)
+    plt_text_setting(x, np.round(list(map(float, happy)), 2), False)
+    plt_text_setting(x, np.round(list(map(float, sad)), 2), True)
 
     plt.bar(x, happy, color='yellow', width=0.4, label='#happy')
     plt.bar(x + 0.4, sad, color='skyblue', width=0.4, label='#sad')
