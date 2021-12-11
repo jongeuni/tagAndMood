@@ -79,3 +79,25 @@ def all_scatter_hist(happy_one, happy_tow, happy_three,
     plt.title(title + ' 사용 빈도 비교')
     plt.legend(title='tag', loc = 'lower right')
     plt.show()
+
+
+def emoji_and_tag(happy_one, happy_tow, happy_three, sad_one, sad_tow, sad_three): # 이모지랑 태그의 상관관계
+    plt.subplot(221)
+    # plt.scatter(range(100), tag_count_div(happy_one), color='pink')
+    # plt.scatter(range(100), emoji_count(happy_one), color='blue')
+    plt.plot(tag_count_div(happy_one))
+    plt.plot(emoji_count(happy_one))
+
+    plt.subplot(222)
+    plt.plot(tag_count_div(happy_tow))
+    plt.plot(emoji_count(happy_tow))
+
+    plt.subplot(223)
+    plt.plot(tag_count_div(sad_one))
+    plt.plot(emoji_count(sad_one))
+
+    plt.subplot(224)
+    plt.plot(tag_count_div(sad_tow))
+    plt.plot(emoji_count(sad_tow))
+
+    plt.show()

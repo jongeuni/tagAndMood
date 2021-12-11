@@ -65,8 +65,13 @@ def choice_graph():
                          tag_count(sad_tow['content'].tolist()),
                          tag_count(sad_three['content'].tolist()),
                          '태그')
-    elif num == 5:  # 이모티콘과 태그의 상관관계
-        print()
+    elif num == 6:  # 이모티콘과 태그의 상관관계
+        emoji_and_tag(happy_one['content'].tolist(),
+                      happy_tow['content'].tolist(),
+                      happy_three['content'].tolist(),
+                      sad_one['content'].tolist(),
+                      sad_tow['content'].tolist(),
+                      sad_three['content'].tolist())
 
 
 def tag_avg():

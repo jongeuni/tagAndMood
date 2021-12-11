@@ -24,3 +24,11 @@ def tag_count(c):
         tags = re.findall(r'#[^\s#,\\]+', i)
         tag_count_lis.append(len(tags))
     return tag_count_lis
+
+
+def tag_count_div(c):
+    tag_count_lis = []
+    for i in c:
+        tags = re.findall(r'#[^\s#,\\]+', i)
+        tag_count_lis.append(len(tags)/2.5)
+    return tag_count_lis
