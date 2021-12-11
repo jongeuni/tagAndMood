@@ -55,10 +55,13 @@ def avg_comparison_graph(sad, happy):
     plt.show()
 
 
-def all_emoji_graph(happy_one, happy_tow, happy_three,
-                        sad_one, sad_tow, sad_three):  # 이모지 그래프
+
+
+def all_scatter_hist(happy_one, happy_tow, happy_three,
+                        sad_one, sad_tow, sad_three, title):  # 산점도와 히스토그램
     hangle()
-    plt.title('이모티콘 사용 빈도 비교')
+
+    plt.title(title+' 사용 빈도 비교')
     plt.scatter(range(100), happy_one, color='pink')
     plt.scatter(range(100), happy_tow, color='pink')
     plt.scatter(range(100), happy_three, color='pink')
@@ -73,6 +76,6 @@ def all_emoji_graph(happy_one, happy_tow, happy_three,
     plt.hist(x=range(100), weights=sad_one, bins=50, label='#슬프다', color='aquamarine', alpha=0.5)
     plt.hist(x=range(100), weights=sad_tow, bins=50, label='#우울해', color='skyblue', alpha=0.5)
     plt.hist(x=range(100), weights=sad_three, bins=50, label='#슬픈하루', color='lightsteelblue', alpha=0.5)
-    plt.title('이모티콘 사용 빈도 비교')
-    plt.legend(title='tag')
+    plt.title(title + ' 사용 빈도 비교')
+    plt.legend(title='tag', loc = 'lower right')
     plt.show()

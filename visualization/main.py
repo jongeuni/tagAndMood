@@ -49,9 +49,24 @@ def choice_graph():
                            letter_count(happy_three['content'].tolist()))
     elif num == 3: # 행복한하루와 슬픈하루 태그
         happy_day_sad_day(letter_count(happy_three['content'].tolist()), letter_count(sad_three['content'].tolist()))
-    elif num == 4:
-        all_emoji_dot_graph(emoji_count(happy_one['content'].tolist()), emoji_count(happy_tow['content'].tolist()), emoji_count(happy_three['content'].tolist()),
-                            emoji_count(sad_one['content'].tolist()), emoji_count(sad_tow['content'].tolist()), emoji_count(sad_three['content'].tolist()))
+    elif num == 4:  # 이모지 갯수 비교
+        all_scatter_hist(emoji_count(happy_one['content'].tolist()),
+                         emoji_count(happy_tow['content'].tolist()),
+                         emoji_count(happy_three['content'].tolist()),
+                         emoji_count(sad_one['content'].tolist()),
+                         emoji_count(sad_tow['content'].tolist()),
+                         emoji_count(sad_three['content'].tolist()),
+                         '이모지')
+    elif num == 5:  # 태그 개수 비교
+        all_scatter_hist(tag_count(happy_one['content'].tolist()),
+                         tag_count(happy_tow['content'].tolist()),
+                         tag_count(happy_three['content'].tolist()),
+                         tag_count(sad_one['content'].tolist()),
+                         tag_count(sad_tow['content'].tolist()),
+                         tag_count(sad_three['content'].tolist()),
+                         '태그')
+    elif num == 5:  # 이모티콘과 태그의 상관관계
+        print()
 
 
 def tag_avg():
