@@ -28,6 +28,32 @@ def graph_choice():
     print()
 
 
+def choice_graph():
+    happy_one = read_csv('../csv/happy_행복해요.csv', header='infer', encoding='utf-8')
+    happy_tow = read_csv('../csv/happy_행복햄.csv', header='infer', encoding='utf-8')
+    happy_three = read_csv('../csv/happy_행복한하루.csv', header='infer', encoding='utf-8')
+    sad_one = read_csv('../csv/sad_슬프다.csv', header='infer', encoding='utf-8')
+    sad_tow = read_csv('../csv/sad_우울해.csv', header='infer', encoding='utf-8')
+    sad_three = read_csv('../csv/sad_슬픈하루.csv', header='infer', encoding='utf-8')
+
+    num = 4
+
+    if num == 1: # csv 파일 평균
+        tag_avg()
+    elif num == 2: #
+        letter_count_graph(letter_count(sad_one['content'].tolist()),
+                           letter_count(sad_tow['content'].tolist()),
+                           letter_count(sad_three['content'].tolist()),
+                           letter_count(happy_one['content'].tolist()),
+                           letter_count(happy_tow['content'].tolist()),
+                           letter_count(happy_three['content'].tolist()))
+    elif num == 3: # 행복한하루와 슬픈하루 태그
+        happy_day_sad_day(letter_count(happy_three['content'].tolist()), letter_count(sad_three['content'].tolist()))
+    elif num == 4:
+        all_emoji_dot_graph(emoji_count(happy_one['content'].tolist()), emoji_count(happy_tow['content'].tolist()), emoji_count(happy_three['content'].tolist()),
+                            emoji_count(sad_one['content'].tolist()), emoji_count(sad_tow['content'].tolist()), emoji_count(sad_three['content'].tolist()))
+
+
 def tag_avg():
     happy_day = read_csv('../csv/happy_행복한하루.csv', header='infer', encoding='utf-8')
     happy_ham = read_csv('../csv/happy_행복햄.csv', header='infer', encoding='utf-8')
@@ -60,27 +86,4 @@ def tag_avg():
 
 
 if __name__ == '__main__':
-    num = int(input('몇 개의 csv 파일을 가져올까요?'))
-    csv_files = []
-    dfs = []
-    tags_evg = []
-    for i in range(0, num):
-        file_name = input('가져올 csv 파일의 이름을 말해주세요')
-        csv_files.append(read_csv('../csv/' + file_name + '.csv', header='infer', encoding='utf-8'))
-        content = csv_files[i]['content'].tolist()
-
-        dfs.append(pd.DataFrame({
-            'content': csv_files[i]['content'].tolist(),
-            'date': csv_files[i]['data'].tolist(),
-            'tag_count': tag_count(content),
-            'letter_count': letter_count(content),
-            'emoji_count': emoji_count(content)
-        }))
-
-        tags_evg.append(
-            evg(tag_count(content))
-        )
-
-    print(tags_evg)
-    bar_graph(tags_evg, 'tag 평균 수')
-    # create_graph(tags_evg)
+    choice_graph()
