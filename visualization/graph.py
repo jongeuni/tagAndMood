@@ -2,6 +2,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+from visualization.count import emoji_count, tag_count_div
+from visualization.main import avg
+
 
 def hangle():  # 한글 깨짐 처리
     plt.rc('font', family='Malgun Gothic')
@@ -55,6 +58,30 @@ def avg_comparison_graph(sad, happy):
     plt.show()
 
 
+def letter_count_graph(sad_one, sad_tow, sad_t, happy_one, happy_tow, happy_three):
+    plt.plot(sad_one, color='aquamarine')
+    plt.plot(sad_tow, color='lightcyan')
+    plt.plot(sad_t, color='skyblue')
+    plt.plot(happy_one, color='pink')
+    plt.plot(happy_tow, color='violet')
+    plt.plot(happy_three, color='palevioletred')
+    plt.show()
+
+
+def happy_day_sad_day(happy, sad):
+    hangle()
+
+    plt.title('#행복한하루 #슬픈하루 글자 수 비교')
+    plt.plot(happy, color='pink', label=avg(happy))
+    plt.plot(sad, color='aquamarine', label=avg(sad))
+    plt.legend(title='avg')
+    plt.show()  # 선
+
+    plt.title('#행복한하루 #슬픈하루 글자 수 비교')
+    plt.scatter(range(100), happy, color='pink', label=avg(happy))
+    plt.scatter(range(100), sad, color='aquamarine', label=avg(sad))
+    plt.legend(title='avg')
+    plt.show()  # 산점도
 
 
 def all_scatter_hist(happy_one, happy_tow, happy_three,
