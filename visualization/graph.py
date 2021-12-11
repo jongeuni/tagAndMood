@@ -2,13 +2,45 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from visualization.count import emoji_count, tag_count_div
+from visualization.count import *
 from visualization.main import avg
 
 
 def hangle():  # 한글 깨짐 처리
     plt.rc('font', family='Malgun Gothic')
     plt.rcParams['axes.unicode_minus'] = False
+
+
+def tag_avg(happy_one, happy_tow, happy_three, sad_one, sad_tow, sad_three):
+    happy_avg = [avg(
+        letter_count(happy_one['content'].tolist())
+        + letter_count(happy_tow['content'].tolist())
+        + letter_count(happy_three['content'].tolist())
+    ), avg(
+        tag_count(happy_one['content'].tolist())
+        + tag_count(happy_tow['content'].tolist())
+        + tag_count(happy_three['content'].tolist())
+    ), avg(
+        emoji_count(happy_one['content'].tolist())
+        + emoji_count(happy_tow['content'].tolist())
+        + emoji_count(happy_three['content'].tolist())
+    )]
+
+    sad_avg = [avg(
+        letter_count(sad_one['content'].tolist())
+        + letter_count(sad_tow['content'].tolist())
+        + letter_count(sad_three['content'].tolist())
+    ), avg(
+        tag_count(sad_one['content'].tolist())
+        + tag_count(sad_tow['content'].tolist())
+        + tag_count(sad_three['content'].tolist())
+    ), avg(
+        emoji_count(sad_one['content'].tolist())
+        + emoji_count(sad_tow['content'].tolist())
+        + emoji_count(sad_three['content'].tolist())
+    )]
+
+    avg_comparison_graph(sad_avg, happy_avg)
 
 
 def create_graph(df):
