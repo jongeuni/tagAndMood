@@ -141,22 +141,30 @@ def all_scatter_hist(happy_one, happy_tow, happy_three,
 
 
 def emoji_and_tag(happy_one, happy_tow, happy_three, sad_one, sad_tow, sad_three): # 이모지랑 태그의 상관관계
-    plt.subplot(221)
+    plt.subplot(231)
     # plt.scatter(range(100), tag_count_div(happy_one), color='pink')
     # plt.scatter(range(100), emoji_count(happy_one), color='blue')
-    plt.plot(tag_count_div(happy_one))
-    plt.plot(emoji_count(happy_one))
+    plt.plot(tag_count_div(happy_one), color = 'pink')
+    plt.plot(emoji_count(happy_one), color='violet')
 
-    plt.subplot(222)
-    plt.plot(tag_count_div(happy_tow))
-    plt.plot(emoji_count(happy_tow))
+    plt.subplot(232)
+    plt.plot(tag_count_div(happy_tow), color='pink')
+    plt.plot(emoji_count(happy_tow), color='violet')
 
-    plt.subplot(223)
-    plt.plot(tag_count_div(sad_one))
-    plt.plot(emoji_count(sad_one))
+    plt.subplot(233)
+    plt.plot(tag_count_div(happy_three), color='pink')
+    plt.plot(emoji_count(happy_three), color='violet')
 
-    plt.subplot(224)
-    plt.plot(tag_count_div(sad_tow))
-    plt.plot(emoji_count(sad_tow))
+    plt.subplot(234)
+    plt.plot(tag_count_div(sad_one), color='aquamarine')
+    plt.plot(emoji_count(sad_one), color='skyblue')
+
+    plt.subplot(235)
+    plt.plot(tag_count_div(sad_tow), color='aquamarine')
+    plt.plot(emoji_count(sad_tow), color='skyblue')
+
+    plt.subplot(236)
+    plt.plot(tag_count_div(sad_three), color='aquamarine')
+    plt.plot(emoji_count(sad_three), color='skyblue')
 
     plt.show()
